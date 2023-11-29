@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package perpustakaan;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,17 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-/**
- *
- * @author adita
- */
-public class Perpustakaan {
 
-    /**
-     * @param args the command line arguments
-     */
+
+public class Perpustakaan {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
 
         // Input data Pustakawan
         System.out.print("Masukkan ID Pustakawan: ");
@@ -29,15 +20,16 @@ public class Perpustakaan {
         System.out.print("Masukkan Nama Pustakawan: ");
         String namaPustakawan = scanner.nextLine();
 
+
         Pustakawan pustakawan = new Pustakawan(idPustakawan, namaPustakawan);
         List<Buku> daftarBuku = new ArrayList<>();
         List<AnggotaPerpustakaan> daftarAnggota = new ArrayList<>();
         List<PeminjamanBuku> daftarPeminjaman = new ArrayList<>();
         List<PengembalianBuku> daftarPengembalian = new ArrayList<>();
         List<Notifikasi> daftarNotifikasi = new ArrayList<>();
-        
+       
         int menu;
-        
+       
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Manajemen Anggota");
@@ -51,6 +43,7 @@ public class Perpustakaan {
             System.out.print("Pilih menu : ");
             menu = scanner.nextInt();
             scanner.nextLine();  // Menangani newline character setelah nextInt
+
 
             switch (menu) {
                 case 1:
@@ -67,6 +60,7 @@ public class Perpustakaan {
                         pilihanAnggota = scanner.nextInt();
                         scanner.nextLine();  // Menangani newline character setelah nextInt
 
+
                         switch (pilihanAnggota) {
                             case 1:
                                 // Tambah Anggota
@@ -77,15 +71,18 @@ public class Perpustakaan {
                                 System.out.print("Masukkan Alamat Anggota: ");
                                 String alamatAnggota = scanner.nextLine();
 
+
                                 AnggotaPerpustakaan anggota = new AnggotaPerpustakaan(namaAnggota, nomorAnggota, alamatAnggota, new ArrayList<>());
                                 daftarAnggota.add(anggota);
                                 System.out.println("Anggota berhasil ditambahkan.");
                                 break;
 
+
                             case 2:
                                 // Edit Anggota
                                 System.out.print("Masukkan Nomor Anggota yang akan diedit: ");
                                 String nomorAnggotaEdit = scanner.nextLine();
+
 
                                 AnggotaPerpustakaan anggotaEdit = null;
                                 for (AnggotaPerpustakaan anggotaTemp : daftarAnggota) {
@@ -95,11 +92,13 @@ public class Perpustakaan {
                                     }
                                 }
 
+
                                 if (anggotaEdit != null) {
                                     System.out.print("Masukkan Nama Baru: ");
                                     String namaBaru = scanner.nextLine();
                                     System.out.print("Masukkan Alamat Baru: ");
                                     String alamatBaru = scanner.nextLine();
+
 
                                     anggotaEdit.setNama(namaBaru);
                                     anggotaEdit.setAlamat(alamatBaru);
@@ -109,10 +108,12 @@ public class Perpustakaan {
                                 }
                                 break;
 
+
                             case 3:
                                 // Hapus Anggota
                                 System.out.print("Masukkan Nomor Anggota yang akan dihapus: ");
                                 String nomorAnggotaHapus = scanner.nextLine();
+
 
                                 AnggotaPerpustakaan anggotaHapus = null;
                                 for (AnggotaPerpustakaan anggotaTemp : daftarAnggota) {
@@ -122,6 +123,7 @@ public class Perpustakaan {
                                     }
                                 }
 
+
                                 if (anggotaHapus != null) {
                                     daftarAnggota.remove(anggotaHapus);
                                     System.out.println("Anggota berhasil dihapus.");
@@ -129,6 +131,7 @@ public class Perpustakaan {
                                     System.out.println("Nomor Anggota tidak ditemukan.");
                                 }
                                 break;
+
 
                             case 4:
                                 // Lihat Anggota
@@ -141,15 +144,18 @@ public class Perpustakaan {
                                 }
                                 break;
 
+
                             case 5:
                                 System.out.println("Kembali ke Menu Utama.");
                                 break;
+
 
                             default:
                                 System.out.println("Pilihan tidak valid.");
                         }
                     } while (pilihanAnggota != 5);
                     break;
+
 
                 case 2:
                     // Menu Buku
@@ -165,6 +171,7 @@ public class Perpustakaan {
                         pilihanBuku = scanner.nextInt();
                         scanner.nextLine();  // Menangani newline character setelah nextInt
 
+
                         switch (pilihanBuku) {
                             case 1:
                                 // Tambah Buku
@@ -175,15 +182,18 @@ public class Perpustakaan {
                                 System.out.print("Masukkan Pengarang Buku: ");
                                 String pengarangBuku = scanner.nextLine();
 
+
                                 Buku buku = new Buku(isbnBuku, judulBuku, pengarangBuku, true);
                                 daftarBuku.add(buku);
                                 System.out.println("Buku berhasil ditambahkan.");
                                 break;
 
+
                             case 2:
                                 // Edit Buku
                                 System.out.print("Masukkan ISBN Buku yang akan diedit: ");
                                 String isbnBukuEdit = scanner.nextLine();
+
 
                                 Buku bukuEdit = null;
                                 for (Buku bukuTemp : daftarBuku) {
@@ -193,11 +203,13 @@ public class Perpustakaan {
                                     }
                                 }
 
+
                                 if (bukuEdit != null) {
                                     System.out.print("Masukkan Judul Baru: ");
                                     String judulBaru = scanner.nextLine();
                                     System.out.print("Masukkan Pengarang Baru: ");
                                     String pengarangBaru = scanner.nextLine();
+
 
                                     bukuEdit.setJudul(judulBaru);
                                     bukuEdit.setPengarang(pengarangBaru);
@@ -207,10 +219,12 @@ public class Perpustakaan {
                                 }
                                 break;
 
+
                             case 3:
                                 // Hapus Buku
                                 System.out.print("Masukkan ISBN Buku yang akan dihapus: ");
                                 String isbnBukuHapus = scanner.nextLine();
+
 
                                 Buku bukuHapus = null;
                                 for (Buku bukuTemp : daftarBuku) {
@@ -220,6 +234,7 @@ public class Perpustakaan {
                                     }
                                 }
 
+
                                 if (bukuHapus != null) {
                                     daftarBuku.remove(bukuHapus);
                                     System.out.println("Buku berhasil dihapus.");
@@ -227,6 +242,7 @@ public class Perpustakaan {
                                     System.out.println("ISBN Buku tidak ditemukan.");
                                 }
                                 break;
+
 
                             case 4:
                                 // Lihat Buku
@@ -240,15 +256,18 @@ public class Perpustakaan {
                                 }
                                 break;
 
+
                             case 5:
                                 System.out.println("Kembali ke Menu Utama.");
                                 break;
+
 
                             default:
                                 System.out.println("Pilihan tidak valid.");
                         }
                     } while (pilihanBuku != 5);
                     break;
+
 
                 case 3:
                     // Peminjaman Buku
@@ -260,6 +279,7 @@ public class Perpustakaan {
                     int durasiPeminjaman = scanner.nextInt();
                     scanner.nextLine();  // Menangani newline character setelah nextInt
 
+
                     AnggotaPerpustakaan anggotaPeminjaman = null;
                     for (AnggotaPerpustakaan anggotaTemp : daftarAnggota) {
                         if (anggotaTemp.getNomoranggota().equals(nomorAnggotaPeminjaman)) {
@@ -268,11 +288,13 @@ public class Perpustakaan {
                         }
                     }
 
+
                     if (anggotaPeminjaman != null) {
                         // Memeriksa apakah riwayat peminjaman tidak null sebelum mengakses
                         if (anggotaPeminjaman.getRiwayat() == null) {
                             anggotaPeminjaman.setRiwayat(new ArrayList<>());
                         }
+
 
                         Buku bukuPeminjaman = null;
                         for (Buku bukuTemp : daftarBuku) {
@@ -282,6 +304,7 @@ public class Perpustakaan {
                                 break;
                             }
                         }
+
 
                         if (bukuPeminjaman != null) {
                             Date tanggalPeminjaman = new Date();
@@ -297,6 +320,7 @@ public class Perpustakaan {
                     }
                     break;
 
+
                 case 4:
                     // Pengembalian Buku
                     System.out.print("Masukkan ISBN Buku yang Dikembalikan: ");
@@ -305,9 +329,11 @@ public class Perpustakaan {
                     int durasiPengembalian = scanner.nextInt();
                     scanner.nextLine();  // Menangani newline character setelah nextInt
 
+
                     PengembalianBuku pengembalian = new PengembalianBuku(new Date(), durasiPengembalian);
                     pengembalian.setIsbn(isbnPengembalian);
                     daftarPengembalian.add(pengembalian);
+
 
                     for (Buku bukuTemp : daftarBuku) {
                         if (bukuTemp.getIsbn().equals(isbnPengembalian)) {
@@ -316,36 +342,40 @@ public class Perpustakaan {
                         }
                     }
 
+
                     System.out.println("Pengembalian berhasil dilakukan.");
                     break;
+
 
                 case 5:
                      // Menampilkan Riwayat Peminjaman
                     System.out.println("\nRiwayat Peminjaman:");
+                    System.out.print("Masukkan Nomor Anggota: ");
+                    String nomorAnggotaRiwayat = scanner.nextLine();
 
-    System.out.print("Masukkan Nomor Anggota: ");
-    String nomorAnggotaRiwayat = scanner.nextLine();
 
-    AnggotaPerpustakaan anggotaRiwayat = null;
-    for (AnggotaPerpustakaan anggotaTemp : daftarAnggota) {
-        if (anggotaTemp.getNomoranggota().equals(nomorAnggotaRiwayat)) {
-            anggotaRiwayat = anggotaTemp;
-            break;
-        }
-    }
+                    AnggotaPerpustakaan anggotaRiwayat = null;
+                    for (AnggotaPerpustakaan anggotaTemp : daftarAnggota) {
+                        if (anggotaTemp.getNomoranggota().equals(nomorAnggotaRiwayat)) {
+                            anggotaRiwayat = anggotaTemp;
+                            break;
+                        }
+                    }
 
-    if (anggotaRiwayat != null) {
-        List<PeminjamanBuku> riwayatPeminjaman = anggotaRiwayat.getRiwayat();
-        for (PeminjamanBuku peminjamanTemp : riwayatPeminjaman) {
-            System.out.println("Tanggal Peminjaman: " + peminjamanTemp.getTanggal());
-            System.out.println("ISBN Buku: " + peminjamanTemp.getIsbn());
-            System.out.println("Durasi Peminjaman: " + peminjamanTemp.getDurasi() + " hari");
-            System.out.println("----------------------------");
-        }
-    } else {
-        System.out.println("Nomor Anggota tidak valid.");
-    }
-    break;
+
+                    if (anggotaRiwayat != null) {
+                        List<PeminjamanBuku> riwayatPeminjaman = anggotaRiwayat.getRiwayat();
+                        for (PeminjamanBuku peminjamanTemp : riwayatPeminjaman) {
+                            System.out.println("Tanggal Peminjaman: " + peminjamanTemp.getTanggal());
+                            System.out.println("ISBN Buku: " + peminjamanTemp.getIsbn());
+                            System.out.println("Durasi Peminjaman: " + peminjamanTemp.getDurasi() + " hari");
+                            System.out.println("----------------------------");
+                        }
+                    } else {
+                        System.out.println("Nomor Anggota tidak valid.");
+                    }
+                    break;
+
 
                 case 6:
                     // Notifikasi
@@ -354,15 +384,17 @@ public class Perpustakaan {
                     System.out.print("Masukkan Isi Notifikasi: ");
                     String isiNotifikasi = scanner.nextLine();
 
+
                     Notifikasi notifikasi = new Notifikasi(judulNotifikasi, isiNotifikasi);
                     daftarNotifikasi.add(notifikasi);
                     notifikasi.mengirimNotifikasi();
                     break;
-                
+               
                 case 7:
                     // Cari Buku berdasarkan ISBN
                     System.out.print("Masukkan ISBN Buku yang ingin dicari: ");
                     String isbnCari = scanner.nextLine();
+
 
                     Buku bukuCari = null;
                     for (Buku bukuTemp : daftarBuku) {
@@ -371,6 +403,7 @@ public class Perpustakaan {
                             break;
                         }
                     }
+
 
                     if (bukuCari != null) {
                         System.out.println("\nBuku ditemukan:");
@@ -382,15 +415,17 @@ public class Perpustakaan {
                         System.out.println("Buku dengan ISBN " + isbnCari + " tidak ditemukan.");
                     }
                     break;    
-                    
+                   
                 case 8:
                     System.out.println("Terima Kasih sudah menggunakan E-Library");
                     break;
 
+
                 default:
                     System.out.println("Pilihan tidak valid.");
             }
-        } while (menu != 8);
+        } while (menu != 8);
 
-    }
+
+    }
 }
