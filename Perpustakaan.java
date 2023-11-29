@@ -47,7 +47,8 @@ public class Perpustakaan {
             System.out.println("4. Pengembalian Buku");
             System.out.println("5. Riwayat Peminjaman");
             System.out.println("6. Notifikasi");
-            System.out.println("7. Keluar");
+            System.out.println("7. Cari Buku");
+            System.out.println("8. Keluar");
             System.out.print("Pilih menu : ");
             menu = scanner.nextInt();
             scanner.nextLine();  // Menangani newline character setelah nextInt
@@ -358,16 +359,39 @@ public class Perpustakaan {
                     daftarNotifikasi.add(notifikasi);
                     notifikasi.mengirimNotifikasi();
                     break;
-
+                
                 case 7:
+                    // Cari Buku berdasarkan ISBN
+                    System.out.print("Masukkan ISBN Buku yang ingin dicari: ");
+                    String isbnCari = scanner.nextLine();
+
+                    Buku bukuCari = null;
+                    for (Buku bukuTemp : daftarBuku) {
+                        if (bukuTemp.getIsbn().equals(isbnCari)) {
+                            bukuCari = bukuTemp;
+                            break;
+                        }
+                    }
+
+                    if (bukuCari != null) {
+                        System.out.println("\nBuku ditemukan:");
+                        System.out.println("ISBN: " + bukuCari.getIsbn());
+                        System.out.println("Judul: " + bukuCari.getJudul());
+                        System.out.println("Pengarang: " + bukuCari.getPengarang());
+                        System.out.println("Ketersediaan: " + (bukuCari.isKetersediaan() ? "Tersedia" : "Tidak Tersedia"));
+                    } else {
+                        System.out.println("Buku dengan ISBN " + isbnCari + " tidak ditemukan.");
+                    }
+                    break;    
+                    
+                case 8:
                     System.out.println("Terima Kasih sudah menggunakan E-Library");
                     break;
 
                 default:
                     System.out.println("Pilihan tidak valid.");
             }
-        } while (menu != 7);
+        } while (menu != 8);
 
     }
 }
-
