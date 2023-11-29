@@ -9,15 +9,19 @@ package perpustakaan;
  *
  * @author adita
  */
+
+//kelas ini merepresentasikan notifikasi untuk dikirim ke anggota oleh pustakawan yang berisi judul dan isi notifikasi
 public class Notifikasi {
     private String judul;
     private String isi;
 
+    ///konstruktor untuk membuat objek dengan parameter judul dan isi
     public Notifikasi(String judul, String isi) {
         this.judul = judul;
         this.isi = isi;
     }    
-
+    
+    //getter dan setter judul
     public String getJudul() {
         return judul;
     }
@@ -25,7 +29,8 @@ public class Notifikasi {
     public void setJudul(String judul) {
         this.judul = judul;
     }
-
+    
+    //getter dan setter isi
     public String getIsi() {
         return isi;
     }
@@ -34,7 +39,7 @@ public class Notifikasi {
         this.isi = isi;
     }
     
-       
+    //metode untuk menampilkan judul dan isi notifikasi
     public void mengirimNotifikasi(){
         System.out.println(judul);
         System.out.println(isi);
